@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body{
+			background: #2f363e;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: relative; 
+
+		}
+		.countdown-container{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			
+
+		}
+		.big-text{
+			font-size: 4rem;
+		}
+		.countdown-container div{
+			margin: 0 2rem;
+			text-align: center;
+			border:2px solid #fff;
+			padding: 0 20px;
+			border-radius: 12px;
+			box-shadow: 0px 2px 10px rgb(0,0,0);
+			box-sizing: border-box;
+			color: #fff;
+			min-width: 150px;
+			min-height: 130px;
+		}
+
+		
+
+	</style>
+</head>
+<body>
+	<p id="demo"></p>
+	<div class="wraper">
+		<div class="">
+			<!-- <h1 class="title"><span>2021</span>NEW YEAR COUNTATION</h1> -->
+			<div class="countdown-container">
+				<div>
+					<p id="days" class="big-text">0</p>
+					<span>Days</span>
+				</div>
+
+				<div>
+					<p id="hours" class="big-text">0</p>
+					<span>Hours</span>
+				</div>
+
+				<div>
+					<p id="minutes" class="big-text">0</p>
+					<span>min</span>
+				</div>
+
+				<div>
+					<p id="seconds" class="big-text">0</p>
+					<span>sec</span>
+				</div>
+
+			</div>
+
+		</div>
+		
+	</div>
+
+	<script type="text/javascript">
+		let daysitem = document.getElementById("days");
+		let houritem = document.getElementById("hours");
+		let minitem = document.getElementById("minutes");
+		let secitem = document.getElementById("seconds");
+       
+            function countdown(){   
+			let futuredate = new Date("15,oct,2023");
+			let currentdate = new Date();
+			let mydate = futuredate - currentdate;
+			//console.log(mydate);
+
+
+
+			let days = Math.floor(mydate/1000/60/60/24);
+			let hours = Math.floor(mydate/1000/60/60)%24;
+			let minutes = Math.floor(mydate/1000/60)%60;
+			let seconds = Math.floor(mydate/1000)%60;
+			//console.log(hours);
+
+		if(mydate < 0){
+		 	clearInterval(countdown());
+		 	document.getElementById("demo").innerHTML = "Expired";
+		 }
+
+
+		 
+
+
+//add zero before single digit no;
+			days = (days < 10) ? "0" + days :days;
+			hours = (hours < 10) ? "0" + hours :hours;
+		    minutes = (minutes < 10) ? "0" + minutes :minutes;
+		    seconds = (seconds < 10) ? "0" + seconds :seconds;
+
+			daysitem.innerHTML = days;
+			houritem.innerHTML = hours;
+			minitem.innerHTML =  minutes;
+			secitem.innerHTML =  seconds;
+
+
+
+			}
+
+
+		
+		countdown();
+
+		setInterval(countdown, 1000);
+
+	
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>
